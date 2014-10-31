@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quotable Quotes</title>
+</head>
+
+	<script type="text/javascript">
+	function init() {
+    	gapi.client.load('quoteendpoint', 'v1', function() {
+    		load();
+    		}, 'http://localhost:8888/_ah/api');
+	}
+	
+	function load() {
+        gapi.client.quoteendpoint.listQuote().execute(function(resp) {
+            if (!resp.code) {
+                    resp.items = resp.items || [];
+                    var result = "";
+                    for (var i=0;i<resp.items.length;i++) {
+                            result = result+ resp.items[i].message + " / " + "<b>" + resp.items[i].author + "</b>" + "<br/>";
+                    }
+                    document.getElementById('listQuotesResult').innerHTML = result;
+            }
+    	});
+	}
+	</script>
+<body>
+	<div id="listQuotesResult"></div>
+	<script src="https://apis.google.com/js/client.js?onload=init"></script>
+</body>
+</html>
