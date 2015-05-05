@@ -22,8 +22,6 @@ public final class EMF {
 				System.out.println("Production server!!");
 				properties.put("javax.persistence.jdbc.driver", "com.mysql.jdbc.GoogleDriver");//
 				properties.put("javax.persistence.jdbc.url","jdbc:google:mysql://x5-gentle-oxygen-h:it3178quote/test");
-//				properties.put("javax.persistence.jdbc.url","jdbc:google:mysql://it3178quote:data/test");
-//				properties.put("javax.persistence.jdbc.url","jdbc:google:mysql://173.194.250.168:3306/test");
 				properties.put("javax.persistence.jdbc.user", "root");
 //				properties.put("javax.persistence.jdbc.password", "it3178quote");
 			} else {
