@@ -48,6 +48,31 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "quoteendpoint.listQuote" : {
+      "path" : "quote",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "demo.QuoteEndpoint.listQuote",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "quoteendpoint.updateQuote" : {
       "path" : "quote",
       "httpMethod" : "PUT",
@@ -56,6 +81,22 @@
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
       "rosyMethod" : "demo.QuoteEndpoint.updateQuote",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "quoteendpoint.insertQuote" : {
+      "path" : "quote",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "demo.QuoteEndpoint.insertQuote",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -93,22 +134,6 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "quoteendpoint.insertQuote" : {
-      "path" : "quote",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "demo.QuoteEndpoint.insertQuote",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "quoteendpoint.removeQuote" : {
       "path" : "quote/{id}",
       "httpMethod" : "DELETE",
@@ -128,31 +153,6 @@
       },
       "response" : {
         "body" : "empty"
-      }
-    },
-    "quoteendpoint.listQuote" : {
-      "path" : "quote",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "demo.QuoteEndpoint.listQuote",
-      "request" : {
-        "parameters" : {
-          "cursor" : {
-            "type" : "string",
-            "required" : false
-          },
-          "limit" : {
-            "type" : "int32",
-            "required" : false
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
       }
     }
   },
@@ -196,7 +196,20 @@
           "$ref" : "Quote"
         }
       },
+      "demo.QuoteEndpoint.listQuote" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Quote"
+        }
+      },
       "demo.QuoteEndpoint.updateQuote" : {
+        "request" : {
+          "$ref" : "Quote"
+        },
+        "response" : {
+          "$ref" : "Quote"
+        }
+      },
+      "demo.QuoteEndpoint.insertQuote" : {
         "request" : {
           "$ref" : "Quote"
         },
@@ -209,20 +222,7 @@
           "$ref" : "CollectionResponse_Quote"
         }
       },
-      "demo.QuoteEndpoint.insertQuote" : {
-        "request" : {
-          "$ref" : "Quote"
-        },
-        "response" : {
-          "$ref" : "Quote"
-        }
-      },
       "demo.QuoteEndpoint.removeQuote" : {
-      },
-      "demo.QuoteEndpoint.listQuote" : {
-        "response" : {
-          "$ref" : "CollectionResponse_Quote"
-        }
       }
     }
   }
