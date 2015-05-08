@@ -68,9 +68,10 @@ public class QuoteEndpoint {
 				.setNextPageToken(cursorString).build();
 	}
 
+	@SuppressWarnings({ "unchecked", "unused" })
 	@ApiMethod(name = "listQuoteByAuthor", path = "quoteByAuthor")
 	public CollectionResponse<Quote> listQuoteByAuthor(
-			@Nullable @Named("author") String author,
+			@Nullable @Named("author") String author,			
 			@Nullable @Named("cursor") String cursorString,
 			@Nullable @Named("limit") Integer limit) {
 

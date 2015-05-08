@@ -1,12 +1,12 @@
 {
   "extends" : "thirdParty.api",
   "abstract" : false,
-  "root" : "https://it3178quote.appspot.com/_ah/api",
+  "root" : "https://it3178quotes.appspot.com/_ah/api",
   "name" : "quoteendpoint",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
-    "bns" : "https://it3178quote.appspot.com/_ah/spi",
+    "bns" : "https://it3178quotes.appspot.com/_ah/spi",
     "deadline" : 65.0,
     "type" : "lily"
   },
@@ -27,22 +27,17 @@
   "ownerName" : "mycompany.com",
   "packagePath" : "services",
   "methods" : {
-    "quoteendpoint.getQuote" : {
-      "path" : "quote/{id}",
-      "httpMethod" : "GET",
+    "quoteendpoint.updateQuote" : {
+      "path" : "quote",
+      "httpMethod" : "PUT",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "demo.QuoteEndpoint.getQuote",
+      "rosyMethod" : "demo.QuoteEndpoint.updateQuote",
       "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -73,22 +68,6 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "quoteendpoint.updateQuote" : {
-      "path" : "quote",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "demo.QuoteEndpoint.updateQuote",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "quoteendpoint.insertQuote" : {
       "path" : "quote",
       "httpMethod" : "POST",
@@ -103,6 +82,48 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "quoteendpoint.getQuote" : {
+      "path" : "quote/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "demo.QuoteEndpoint.getQuote",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "quoteendpoint.removeQuote" : {
+      "path" : "quote/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "demo.QuoteEndpoint.removeQuote",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
       }
     },
     "quoteendpoint.listQuoteByAuthor" : {
@@ -132,27 +153,6 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "quoteendpoint.removeQuote" : {
-      "path" : "quote/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "demo.QuoteEndpoint.removeQuote",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "empty"
       }
     }
   },
@@ -191,7 +191,10 @@
       }
     },
     "methods" : {
-      "demo.QuoteEndpoint.getQuote" : {
+      "demo.QuoteEndpoint.updateQuote" : {
+        "request" : {
+          "$ref" : "Quote"
+        },
         "response" : {
           "$ref" : "Quote"
         }
@@ -199,14 +202,6 @@
       "demo.QuoteEndpoint.listQuote" : {
         "response" : {
           "$ref" : "CollectionResponse_Quote"
-        }
-      },
-      "demo.QuoteEndpoint.updateQuote" : {
-        "request" : {
-          "$ref" : "Quote"
-        },
-        "response" : {
-          "$ref" : "Quote"
         }
       },
       "demo.QuoteEndpoint.insertQuote" : {
@@ -217,12 +212,17 @@
           "$ref" : "Quote"
         }
       },
+      "demo.QuoteEndpoint.getQuote" : {
+        "response" : {
+          "$ref" : "Quote"
+        }
+      },
+      "demo.QuoteEndpoint.removeQuote" : {
+      },
       "demo.QuoteEndpoint.listQuoteByAuthor" : {
         "response" : {
           "$ref" : "CollectionResponse_Quote"
         }
-      },
-      "demo.QuoteEndpoint.removeQuote" : {
       }
     }
   }
