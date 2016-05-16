@@ -15,7 +15,7 @@ public final class EMF {
 			if (SystemProperty.environment.value() == SystemProperty.Environment.Value.Production) {
 				System.out.println("Production server!!");
 				properties.put("javax.persistence.jdbc.driver", "com.mysql.jdbc.GoogleDriver");//
-				properties.put("javax.persistence.jdbc.url","jdbc:google:mysql://x5-gentle-oxygen-h:us-central1:x1498192/test");
+				properties.put("javax.persistence.jdbc.url","jdbc:google:mysql://x5-gentle-oxygen-h:us-central1:do-not-delete/test");
 				properties.put("javax.persistence.jdbc.user", "root");
 				properties.put("javax.persistence.jdbc.password", "it3178");
 				properties.put("datanucleus.schema.autoCreateAll", "true");
